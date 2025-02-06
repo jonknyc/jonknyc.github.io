@@ -1,35 +1,29 @@
 {
   "name": "jonknyc.github.io",
+  "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "build": "react-router build",
-    "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build/client"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
-    "@react-router/node": "^7.1.5",
-    "@react-router/serve": "^7.1.5",
-    "isbot": "^5.1.17",
+    "next": "15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-router": "^7.1.5"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@react-router/dev": "^7.1.5",
-    "@tailwindcss/vite": "^4.0.0",
+    "@eslint/eslintrc": "^3",
     "@types/node": "^20",
-    "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.6",
     "gh-pages": "^6.3.0",
-    "react-router-devtools": "^1.1.0",
-    "tailwindcss": "^4.0.0",
-    "typescript": "^5.7.2",
-    "vite": "^5.4.11",
-    "vite-tsconfig-paths": "^5.1.4"
-  },
-  "homepage": "https://jonathankennell.com"
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
 }
