@@ -12,9 +12,10 @@ export async function generateStaticParams() {
 export default async function Project({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const project = await getProject(params.slug)
+  const { slug } = await params
+  const project = await getProject(slug)
 
   if (!project) {
     notFound()

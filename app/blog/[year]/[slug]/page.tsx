@@ -1,12 +1,24 @@
 import { getBlogPost, getBlogPosts } from "@/lib/mdx"
 import { notFound } from "next/navigation"
 
+export async function generateStaticParams() {
+  const posts = await getBlogPosts()
+
+  return Object.entries(posts).flatMap(([year, yearPosts]) =>
+    yearPosts.map((post) => ({
+      year,
+      slug: post.slug,
+    }))
+  )
+}
+
 export default async function BlogPost({
   params,
 }: {
-  params: { year: string; slug: string }
+  params: Promise<{ year: string; slug: string }>
 }) {
-  const post = await getBlogPost(params.year, params.slug)
+  const { year, slug } = await params
+  const post = await getBlogPost(year, slug)
 
   if (!post) {
     notFound()
@@ -36,16 +48,5 @@ export default async function BlogPost({
       </div>
       {post.content}
     </article>
-  )
-}
-
-export async function generateStaticParams() {
-  const posts = await getBlogPosts()
-
-  return Object.entries(posts).flatMap(([year, yearPosts]) =>
-    yearPosts.map((post) => ({
-      year,
-      slug: post.slug,
-    }))
   )
 }
