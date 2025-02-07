@@ -1,5 +1,3 @@
-import { AppSidebar } from "@/components/app-sidebar"
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
@@ -19,20 +17,21 @@ export const metadata: Metadata = {
   description: "Jonathan Kennell's personal website",
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SidebarProvider>
-          <AppSidebar />
+        {/* <SidebarProvider>
+          <AppSidebar posts={posts} projects={projects} />
           <SidebarInset>{children}</SidebarInset>
-        </SidebarProvider>
+        </SidebarProvider> */}
+        {children}
       </body>
     </html>
   )

@@ -86,3 +86,36 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* MDX Styles */
+.prose {
+  @apply text-foreground;
+}
+
+.prose pre {
+  @apply bg-muted text-muted-foreground;
+}
+
+.prose code {
+  @apply bg-muted text-muted-foreground px-1 py-0.5 rounded;
+}
+
+.prose a {
+  @apply text-primary hover:text-primary/80;
+}
+
+.prose h2 {
+  @apply mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0;
+}
+
+.prose h3 {
+  @apply mt-8 scroll-m-20 text-2xl font-semibold tracking-tight;
+}
+
+.prose ul {
+  @apply my-6 ml-6 list-disc [&>li]:mt-2;
+}
+
+.prose blockquote {
+  @apply mt-6 border-l-2 pl-6 italic;
+}
